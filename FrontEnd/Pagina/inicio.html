@@ -81,7 +81,10 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a style="color:#14cbd1"; class="page-scroll" href="#VerPacientes"><strong>Comentarios</strong></a>
+                                        <a style="color:#14cbd1"; class="page-scroll" href="#VerComentarios"><strong>Comentarios</strong></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a style="color:#14cbd1"; class="page-scroll" href="#CrearComentario"><strong>Crear Comentario</strong></a>
                                     </li>
                                     <li class="nav-item">
                                         <a style="color:#14cbd1"; class="page-scroll" href="#creacionymodificacion"><strong>Modificar mis Datos</strong></a>
@@ -125,7 +128,7 @@
   
     
 <!-- LISTADO de Comentarios -->
-<section id="VerPacientes" class="about-area pt-70">
+<section id="VerComentarios" class="about-area pt-70">
     <br>
     <br>
     <div class="container">
@@ -153,13 +156,13 @@
 
 
     <!--====== AGREGAR Y MODIFICAR ======-->
-    <section id="creacionymodificacion" class="services-area pt-120">
+    <section id="CrearComentario" class="services-area pt-120">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="section-title text-center pb-40">
                         <div class="line m-auto"></div>
-                        <h3 class="title">Modificar Mis Datos</h3>
+                        <h3 class="title">Crear Comentario</h3>
                         <br>
                     </div> <!-- section title -->
                 </div>
@@ -169,56 +172,36 @@
                     <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
                  
                         <div class="services-content mt-30">
-                            <h4 class="services-title"><a href="#">Crear</a></h4>
+                            <h4 class="services-title"><a href="#">Crear Comentario CURSO</a></h4>
                             <br>
-                            <input type="text" id="nombrep" placeholder="Nombre">
-                            <input type="text" id="apellidop" placeholder="Apellido">
-                           
+                            <input type="text" id="nameestudiante" placeholder="Nombre">
                             <br>
-
-                            <label for="start">Fecha de Nacimiento:</label>
-                            <input type="date" id="fechap" name="trip-start"
+                            <p>Curso:</p><select id="cc" class="select-css">
+                                <option>Selecciona una opción</option>
+                                <option>Profe 1</option>
+                                <option>Profe 2</option>
+                                <option>Profe 3</option>
+                                <option>Profe 4</option>
+                                <option>Profe 5</option>
+                                <option>Profe 6</option>
+                                <option>Profe 7</option>
+                                <option>Profe 8</option>
+                                <option>Profe 9</option>
+                                <option>Profe 10</option>
+                              </select>
+                            <br>
+                            <label for="start">Fecha:</label>
+                            <input type="date" id="fecha" name="trip-start"
                              value="2000-12-31"
                              min="1990-12-31" max="2021-12-31">
-
-                             <br>
-
-                            <p>Genero:</p><select id="sexop" class="select-css">
-                                <option>Selecciona una opción</option>
-                                <option>Masculino</option>
-                                <option>Femenino</option>
-                              </select>
-
                             <br>
-
-                            <input type="text" id="userp" placeholder="Nombre Usuario">
-                            <input type="text" id="passwordp" placeholder="Contraseña">
-                            <input type="text" id="telp" placeholder="Numero Telefonico">
+                            <input type="text" id="mensaje" placeholder="Comentario en Cuestion">
                             <br>
-                            <button class="btn btn btn-success" onclick="agregarPaciente()">Agregar</button>
+                            <button class="btn btn btn-success" onclick="agregarComentario()">Agregar</button>
                             <br>                       
                         </div>
                     </div> 
-                </div> -->
-                <div class="col-lg-4 col-md-7 col-sm-8">
-                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-                 
-                        <div class="services-content mt-30">
-                            <h4 class="services-title"><a href="#">Modificar</a></h4>
-                            <br>
-                            <input type="text" id="vnombrep" placeholder="REGISTRO DE USUARIO">
-                            <input type="text" id="mnombrep" placeholder="Nuevo Nombre">
-                            <input type="text" id="mapellidop" placeholder="Nuevo Apellido">
-                            <!-- <input type="text" id="muserp" placeholder="Nuevo Nombre Usuario"> -->
-                            <input type="text" id="mpasswordp" placeholder="Nueva Contraseña">
-                            <input type="text" id="mcorreop" placeholder="Nuevo Correo">
-                            <br>
-                            <button class="btn btn btn-success" onclick="modificarPaciente()">Modificar</button>
-                                                   
-                        </div>
-                    </div> <!-- single services -->
-                </div>
-
+                
             </div> <!-- row -->
            
         </div> <!-- container -->
@@ -236,7 +219,7 @@
 
 
 
-
+    <!-- EN PROCESO -->
     <!--====== AGREGAR Y MODIFICAR ======-->
     <section id="creacionymodificacion" class="services-area pt-120">
         <div class="container">
@@ -250,42 +233,6 @@
                 </div>
             </div> <!-- row -->
             <div class="row justify-content-center">
-
-                <!-- <div class="col-lg-4 col-md-7 col-sm-8">
-                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-                 
-                        <div class="services-content mt-30">
-                            <h4 class="services-title"><a href="#">Crear</a></h4>
-                            <br>
-                            <input type="text" id="nombrep" placeholder="Nombre">
-                            <input type="text" id="apellidop" placeholder="Apellido">
-                           
-                            <br>
-
-                            <label for="start">Fecha de Nacimiento:</label>
-                            <input type="date" id="fechap" name="trip-start"
-                             value="2000-12-31"
-                             min="1990-12-31" max="2021-12-31">
-
-                             <br>
-
-                            <p>Genero:</p><select id="sexop" class="select-css">
-                                <option>Selecciona una opción</option>
-                                <option>Masculino</option>
-                                <option>Femenino</option>
-                              </select>
-
-                            <br>
-
-                            <input type="text" id="userp" placeholder="Nombre Usuario">
-                            <input type="text" id="passwordp" placeholder="Contraseña">
-                            <input type="text" id="telp" placeholder="Numero Telefonico">
-                            <br>
-                            <button class="btn btn btn-success" onclick="agregarPaciente()">Agregar</button>
-                            <br>                       
-                        </div>
-                    </div> 
-                </div> -->
                 <div class="col-lg-4 col-md-7 col-sm-8">
                     <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
                  
@@ -299,14 +246,18 @@
                             <input type="text" id="mpasswordp" placeholder="Nueva Contraseña">
                             <input type="text" id="mcorreop" placeholder="Nuevo Correo">
                             <br>
+                            <br>
                             <button class="btn btn btn-success" onclick="modificarPaciente()">Modificar</button>
-                                                   
+                                               
                         </div>
                     </div> <!-- single services -->
                 </div>
 
             </div> <!-- row -->
-           
+            <br>
+            <br>
+            <br>
+            <br>
         </div> <!-- container -->
     </section>
 

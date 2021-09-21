@@ -105,7 +105,7 @@ function cargar(){
     }
 }
 
-//ARREGLAR
+//ARREGLAR pal usuario
 function modificarPaciente(){
   let nombrep_o = document.getElementById("vnombrep");
   let nombrep = document.getElementById("mnombrep");
@@ -200,6 +200,40 @@ function agregarPaciente(){
 }
 
 
+
+function agregarComentario(){
+  let nameestudiante = document.getElementById("nameestudiante");
+  let cc = document.getElementById("cc");
+  let fecha = document.getElementById("fecha");
+  let mensaje = document.getElementById("mensaje");
+  
+  fetch('http://localhost:5000/comentarios', {
+    method: 'POST',
+    headers,
+    body: `{
+        "nameestudiante":"${nameestudiante.value}",
+        "cc":"${cc.value}",
+        "mensaje":"${mensaje.value}",
+        "fecha":"${fecha.value}"
+      }`,
+  })
+  .then(response => response.json())
+  .then(result => {
+    console.log('Success:', result);
+    actualizar()
+    nameestudiante.value=''
+    cc.value='Selecciona una opcion'
+    mensaje.value=''
+    fecha.value=''
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+}
+
+
+
 function actualizar(){
   document.getElementById("cardsc").innerHTML = '';
   let text="";
@@ -208,18 +242,14 @@ text = `<table class="table" style="margin=10px">
 <tr>
 <th scope="col">#</th>
 <th scope="col">Nombre</th>
-<th scope="col">Apellido</th>
-<th scope="col">Fecha Nacimiento</th>
-<th scope="col">Sexo</th>
-<th scope="col">Usuario</th>
-<th scope="col">Contraseña</th>
-<th scope="col">Telefono</th>
-<th scope="col">Opciones</th>
+<th scope="col">Curso/Catedratico</th>
+<th scope="col">Mensaje</th>
+<th scope="col">Fecha</th>
 </tr>
 </thead>
 <tbody>`
 
-  fetch('http://localhost:5000/obtenerpacientes')
+  fetch('http://localhost:5000/obtenercomentarios')
   .then(response => response.json())
   .then(data =>{
       var i;
@@ -229,17 +259,13 @@ text = `<table class="table" style="margin=10px">
           text+= `
                   <tr>
                   <th scope="row">${i+1}</th>
-                  <td>${data[i].nombrep}</td>
-                  <td>${data[i].apellidop}</td>
-                  <td>${data[i].fechap}</td>
-                  <td>${data[i].sexop}</td>
-                  <td>${data[i].userp}</td>
-                  <td>${data[i].passwordp}</td>
-                  <td>${data[i].telp}</td>
-                  <td><button href="#" class="btn btn btn-danger" onclick="eliminar('${data[i].nombrep}','${data[i].userp}')">Eliminar</button></td>
+                  <td>${data[i].nameestudiante}</td>
+                  <td>${data[i].cc}</td>
+                  <td>${data[i].mensaje}</td>
+                  <td>${data[i].fecha}</td>
                   </tr>
                   `
-                  console.log(data[i].nombrep,'prueba')
+                  // console.log(data[i].nombrep,'prueba')
       }
       text+=`</tbody>
               </table>`
@@ -298,7 +324,7 @@ text2 = `<table class="table" style="margin=10px">
 </thead>
 <tbody>`
 
-fetch('http://localhost:5000/obtenerpacientes')
+fetch('http://localhost:5000/obtenercomentarios')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -308,10 +334,10 @@ fetch('http://localhost:5000/obtenerpacientes')
         text2+= `
                 <tr>
                 <th scope="row">${i+1}</th>
-                <td>${data[i].nombrep}</td>
-                <td>${data[i].cursop}</td>
-                <td>${data[i].mensajep}</td>
-                <td>${data[i].fechap}</td>
+                <td>${data[i].nameestudiante}</td>
+                <td>${data[i].cc}</td>
+                <td>${data[i].mensaje}</td>
+                <td>${data[i].fecha}</td>
                 </tr>
                 `
     }

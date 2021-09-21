@@ -1,4 +1,6 @@
 class Comentario:
-    def __init__(self,nameestudiante,texto):
+    def __init__(self,nameestudiante,cc,mensaje,fecha):
         self.nameestudiante = nameestudiante
-        self.texto = texto
+        self.cc = cc
+        self.mensaje = mensaje
+        self.fecha = fecha

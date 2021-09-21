@@ -6,6 +6,7 @@ from Enfermeros import Enfermero
 from Citas import Cita
 from Medicamentos import Medicamento
 from Solicitudes import Solicitud
+from Comentarios import Comentario
 import json
 import re
 
@@ -13,12 +14,16 @@ import re
 class Gestor:
     def __init__(self):
         self.usuarios =[]
+        self.comentarios = []
+
         self.pacientes=[]
         self.medicos=[]
         self.enfermeros=[]
         self.citas=[]
         self.medicamentos=[]
         self.solicitudes=[]
+
+
         
 
         self.pacientes.append(Paciente('Juan','Martinez','02-07-2001','Masculino','jj','1234','42083200'))
@@ -28,57 +33,69 @@ class Gestor:
         self.medicamentos.append(Medicamento('Panadol','Ayuda a la Tos','Q10','2'))
         self.solicitudes.append(Solicitud('fecha','hora','motivo'))
 
-
+        #ESTO ES LO QUE IMPORTA
+        #USUARIOS
         self.usuarios.append(Usuario('Javier','Golon','1234','admin',''))
         self.usuarios.append(Usuario('Edgar','Alvarez','1234','rol',''))
         self.usuarios.append(Usuario('Luisa','Ortiz','1234','luitiz',''))
+
+
+        #COMENTARIOS
+        self.comentarios.append(Comentario('rol','inter 1','mensaje','fecha'))
+        
 
     #Create
     def crearUsuario(self,nombre,apellido,password,user,correo):
         self.usuarios.append(Usuario(nombre,apellido,password,user,correo))
 
-
-    def crearPaciente(self,nombrep,apellidop,fechap,sexop,userp,passwordp,telp):
-        self.pacientes.append(Paciente(nombrep,apellidop,fechap,sexop,userp,passwordp,telp)) 
-
-
-    def crearMedico(self,nombrem,apellidom,fecham,sexom,userm,passwordm,especialidadm,telm):
-        self.medicos.append(Medico(nombrem,apellidom,fecham,sexom,userm,passwordm,especialidadm,telm)) 
+    def crearComentario(self,nameestudiante,cc,mensaje,fecha):
+        self.comentarios.append(Comentario(nameestudiante,cc,mensaje,fecha))
 
 
-    def crearEnfermero(self,nombree,apellidoe,fechae,sexoe,usere,passworde,tele):
-        self.enfermeros.append(Enfermero(nombree,apellidoe,fechae,sexoe,usere,passworde,tele)) 
+    # def crearPaciente(self,nombrep,apellidop,fechap,sexop,userp,passwordp,telp):
+    #     self.pacientes.append(Paciente(nombrep,apellidop,fechap,sexop,userp,passwordp,telp)) 
 
-    def crearSolicitud(self,fechac,horac,motivoc):
-        self.solicitudes.append(Solicitud(fechac,horac,motivoc)) 
 
-    def crearMedicamento(self,nombremed,descripcionmed,preciomed,cantidadmed):
-        self.medicamentos.append(Medicamento(nombremed,descripcionmed,preciomed,cantidadmed)) 
+    # def crearMedico(self,nombrem,apellidom,fecham,sexom,userm,passwordm,especialidadm,telm):
+    #     self.medicos.append(Medico(nombrem,apellidom,fecham,sexom,userm,passwordm,especialidadm,telm)) 
+
+
+    # def crearEnfermero(self,nombree,apellidoe,fechae,sexoe,usere,passworde,tele):
+    #     self.enfermeros.append(Enfermero(nombree,apellidoe,fechae,sexoe,usere,passworde,tele)) 
+
+    # def crearSolicitud(self,fechac,horac,motivoc):
+    #     self.solicitudes.append(Solicitud(fechac,horac,motivoc)) 
+
+    # def crearMedicamento(self,nombremed,descripcionmed,preciomed,cantidadmed):
+    #     self.medicamentos.append(Medicamento(nombremed,descripcionmed,preciomed,cantidadmed)) 
 
 
     #Read
     def obtener_usuarios(self):
         return json.dumps([ob.__dict__ for ob in self.usuarios])
 
-    def obtener_pacientes(self):
-        return json.dumps([ob.__dict__ for ob in self.pacientes])
+    def obtener_comentarios(self):
+        return json.dumps([ob.__dict__ for ob in self.comentarios])
 
-    def obtener_medicos(self):
-        return json.dumps([ob.__dict__ for ob in self.medicos])
+    # def obtener_pacientes(self):
+    #     return json.dumps([ob.__dict__ for ob in self.pacientes])
+
+    # def obtener_medicos(self):
+    #     return json.dumps([ob.__dict__ for ob in self.medicos])
    
-    def obtener_enfermeros(self):
-        return json.dumps([ob.__dict__ for ob in self.enfermeros])
+    # def obtener_enfermeros(self):
+    #     return json.dumps([ob.__dict__ for ob in self.enfermeros])
 
-    def obtener_medicamentos(self):
-        return json.dumps([ob.__dict__ for ob in self.medicamentos])
+    # def obtener_medicamentos(self):
+    #     return json.dumps([ob.__dict__ for ob in self.medicamentos])
    
-    def obtener_citas(self):
-        return json.dumps([ob.__dict__ for ob in self.citas])
+    # def obtener_citas(self):
+    #     return json.dumps([ob.__dict__ for ob in self.citas])
 
-    def obtener_solicitudes(self):
-        return json.dumps([ob.__dict__ for ob in self.solicitudes])
+    # def obtener_solicitudes(self):
+    #     return json.dumps([ob.__dict__ for ob in self.solicitudes])
 
-    #Update
+    #Update HACER UNA PARA USUARIOS
     def actualizar_paciente(self,nombrep,nombrenuevo,apellidop,fechap,sexop,userp,passwordp,telp):
         for x in self.pacientes:
             if x.nombrep==nombrep:
@@ -87,26 +104,26 @@ class Gestor:
         return False
 
 
-    def actualizar_medico(self,nombrem,nombrenuevo,apellidom,fecham,sexom,userm,passwordm,especialidadm,telm):
-        for x in self.medicos:
-            if x.nombrem==nombrem:
-                self.medicos[self.medicos.index(x)]=Medico(nombrenuevo,apellidom,fecham,sexom,userm,passwordm,especialidadm,telm)
-                return True
-        return False
+    # def actualizar_medico(self,nombrem,nombrenuevo,apellidom,fecham,sexom,userm,passwordm,especialidadm,telm):
+    #     for x in self.medicos:
+    #         if x.nombrem==nombrem:
+    #             self.medicos[self.medicos.index(x)]=Medico(nombrenuevo,apellidom,fecham,sexom,userm,passwordm,especialidadm,telm)
+    #             return True
+    #     return False
 
-    def actualizar_enfermero(self,nombree,nombrenuevo,apellidoe,fechae,sexoe,usere,passworde,tele):
-        for x in self.enfermeros:
-            if x.nombree==nombree:
-                self.enfermeros[self.enfermeros.index(x)]=Enfermero(nombrenuevo,apellidoe,fechae,sexoe,usere,passworde,tele)
-                return True
-        return False
+    # def actualizar_enfermero(self,nombree,nombrenuevo,apellidoe,fechae,sexoe,usere,passworde,tele):
+    #     for x in self.enfermeros:
+    #         if x.nombree==nombree:
+    #             self.enfermeros[self.enfermeros.index(x)]=Enfermero(nombrenuevo,apellidoe,fechae,sexoe,usere,passworde,tele)
+    #             return True
+    #     return False
 
-    def actualizar_medicamento(self,nombremed,descripcionmed,preciomed,cantidadmed):
-        for x in self.medicamentos:
-            if x.nombremed==nombremed:
-                self.medicamentos[self.medicamentos.index(x)]=Medicamento(nombremed,descripcionmed,preciomed,cantidadmed)
-                return True
-        return False
+    # def actualizar_medicamento(self,nombremed,descripcionmed,preciomed,cantidadmed):
+    #     for x in self.medicamentos:
+    #         if x.nombremed==nombremed:
+    #             self.medicamentos[self.medicamentos.index(x)]=Medicamento(nombremed,descripcionmed,preciomed,cantidadmed)
+    #             return True
+    #     return False
 
 
     #Delete
@@ -146,7 +163,7 @@ class Gestor:
                 return True
         return False
 
-    #Iniciar Sesion
+    #Iniciar Sesion //NO TOCAR
     def iniciar_sesion(self,user,password):
         for x in self.usuarios:
             if (x.password==password and x.user==user.lower()):
@@ -173,59 +190,55 @@ class Gestor:
     def registrar_usuario(self,nombre,apellido,password,user,correo):
         self.usuarios.append(Usuario(nombre,apellido,password,user,correo))
 
-    def registrar_paciente(self,nombrep,apellidop,fechap,sexop,userp,passwordp,telp):
-        self.pacientes.append(Paciente(nombrep,apellidop,fechap,sexop,userp,passwordp,telp)) 
+    def registrar_comentario(self,nameestudiante,cc,mensaje,fecha):
+        self.comentarios.append(Comentario(nameestudiante,cc,mensaje,fecha))
 
-    def registrar_medico(self,nombrem,apellidom,fecham,sexom,userm,passwordm,especialidadm,telm):
-        self.medicos.append(Medico(nombrem,apellidom,fecham,sexom,userm,passwordm,especialidadm,telm)) 
+    
 
-    def registrar_enfermero(self,nombree,apellidoe,fechae,sexoe,usere,passworde,tele):
-        self.enfermeros.append(Enfermero(nombree,apellidoe,fechae,sexoe,usere,passworde,tele)) 
+    # def registrar_paciente(self,nombrep,apellidop,fechap,sexop,userp,passwordp,telp):
+    #     self.pacientes.append(Paciente(nombrep,apellidop,fechap,sexop,userp,passwordp,telp)) 
 
-    def registrar_solicitud(self,fechac,horac,motivoc):
-        self.solicitudes.append(Solicitud(fechac,horac,motivoc)) 
+    # def registrar_medico(self,nombrem,apellidom,fecham,sexom,userm,passwordm,especialidadm,telm):
+    #     self.medicos.append(Medico(nombrem,apellidom,fecham,sexom,userm,passwordm,especialidadm,telm)) 
 
-    def registrar_medicamento(self,nombremed,descripcionmed,preciomed,cantidadmed):
-        self.medicamentos.append(Medicamento(nombremed,descripcionmed,preciomed,cantidadmed)) 
+    # def registrar_enfermero(self,nombree,apellidoe,fechae,sexoe,usere,passworde,tele):
+    #     self.enfermeros.append(Enfermero(nombree,apellidoe,fechae,sexoe,usere,passworde,tele)) 
+
+    # def registrar_solicitud(self,fechac,horac,motivoc):
+    #     self.solicitudes.append(Solicitud(fechac,horac,motivoc)) 
+
+    # def registrar_medicamento(self,nombremed,descripcionmed,preciomed,cantidadmed):
+    #     self.medicamentos.append(Medicamento(nombremed,descripcionmed,preciomed,cantidadmed)) 
 
 
     #Carga Masiva
-    def cargamasiva(self,data):
-        hola = re.split('\n',data)
-        print(hola[0])
-        i=1
-        while i < len(hola):
-            texto = re.split(',',hola[i])
-            self.crearPaciente(texto[0],texto[1],texto[2],texto[3],texto[4],texto[5],texto[6])
-            i = i+1 
+    # def cargamasiva(self,data):
+    #     hola = re.split('\n',data)
+    #     print(hola[0])
+    #     i=1
+    #     while i < len(hola):
+    #         texto = re.split(',',hola[i])
+    #         self.crearPaciente(texto[0],texto[1],texto[2],texto[3],texto[4],texto[5],texto[6])
+    #         i = i+1 
 
 
-    def cargamasivam(self,data):
-        hola = re.split('\n',data)
-        print(hola[0])
-        i=1
-        while i < len(hola):
-            texto = re.split(',',hola[i])
-            self.crearMedico(texto[0],texto[1],texto[2],texto[3],texto[4],texto[5],texto[6],texto[7])
-            i = i+1 
+    # def cargamasivam(self,data):
+    #     hola = re.split('\n',data)
+    #     print(hola[0])
+    #     i=1
+    #     while i < len(hola):
+    #         texto = re.split(',',hola[i])
+    #         self.crearMedico(texto[0],texto[1],texto[2],texto[3],texto[4],texto[5],texto[6],texto[7])
+    #         i = i+1 
 
 
-    def cargamasivae(self,data):
-        hola = re.split('\n',data)
-        print(hola[0])
-        i=1
-        while i < len(hola):
-            texto = re.split(',',hola[i])
-            self.crearEnfermero(texto[0],texto[1],texto[2],texto[3],texto[4],texto[5],texto[6])
-            i = i+1 
+    # def cargamasivae(self,data):
+    #     hola = re.split('\n',data)
+    #     print(hola[0])
+    #     i=1
+    #     while i < len(hola):
+    #         texto = re.split(',',hola[i])
+    #         self.crearEnfermero(texto[0],texto[1],texto[2],texto[3],texto[4],texto[5],texto[6])
+    #         i = i+1 
 
-            
-
-    def cargamasivamed(self,data):
-        hola = re.split('\n',data)
-        print(hola[0])
-        i=1
-        while i < len(hola):
-            texto = re.split(',',hola[i])
-            self.crearMedicamento(texto[0],texto[1],texto[2],texto[3])
-            i = i+1 
+   
