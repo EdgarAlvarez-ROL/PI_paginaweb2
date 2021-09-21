@@ -237,16 +237,14 @@ function agregarComentario(){
 function actualizar(){
   document.getElementById("cardsc").innerHTML = '';
   let text="";
-text = `<table class="table" style="margin=10px">
-<thead>
-<tr>
-<th scope="col">#</th>
-<th scope="col">Nombre</th>
-<th scope="col">Curso/Catedratico</th>
-<th scope="col">Mensaje</th>
-<th scope="col">Fecha</th>
-</tr>
-</thead>
+text = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar por curso o catedratico...">
+<table id="myTable">
+  <tr class="header">
+    <th style="width:40%;">#</th>
+    <th style="width:40%;">Curso / Catedratico</th>
+    <th style="width:40%;">Estudiante</th>
+    <th style="width:60%;">Mensaje</th>
+    <th style="width:50%;">Fecha</th>
 <tbody>`
 
   fetch('http://localhost:5000/obtenercomentarios')
@@ -259,8 +257,8 @@ text = `<table class="table" style="margin=10px">
           text+= `
                   <tr>
                   <th scope="row">${i+1}</th>
-                  <td>${data[i].nameestudiante}</td>
                   <td>${data[i].cc}</td>
+                  <td>${data[i].nameestudiante}</td>
                   <td>${data[i].mensaje}</td>
                   <td>${data[i].fecha}</td>
                   </tr>
@@ -276,52 +274,17 @@ text = `<table class="table" style="margin=10px">
 }
 
 
-
-  // Carga Pacientes
-/*
-  let text="";
-  fetch('http://localhost:5000/obtenerpacientes')
-  .then(response => response.json())
-  .then(data =>{
-      var i;
-      for(i=0;i<data.length;i++){
-          text+= `<br>
-                  <div class="col-sm-5 col-md-5 col-lg-5" style="margin-top: 30px;border-style: dotted;">
-                  <div class="card bg-light" style="width: auto;">
-                  <div class="card-body">
-                      <h4 class="card-title">${data[i].nombrep}</h4>
-                      <h4 class="card-title">${data[i].apellidop}</h4>
-                      <h4 class="card-title">${data[i].fechap}</h4>
-                      <h4 class="card-title">${data[i].sexop}</h4>
-                      <h4 class="card-title">${data[i].userp}</h4>
-                      <h4 class="card-title">${data[i].passwordp}</h4>
-                      <h4 class="card-title">${data[i].telp}</h4>
-                      <button href="#" class="btn btn btn-danger" onclick="eliminar('${data[i].nombrep}','${data[i].userp}')">Eliminar</button>
-                  </div>
-                  </div>
-                  </div>
-                  <br>`
-          console.log(data[i].nombrep,'prueba')
-      }
-      document.getElementById("cardsc").innerHTML = text;
-  });
-
-  */
-
-
 // Carga de Pacientes 2.0
 
 let text2=""
-text2 = `<table class="table" style="margin=10px">
-<thead>
-<tr>
-<th scope="col">#</th>
-<th scope="col">Nombre</th>
-<th scope="col">Curso/Catedratico</th>
-<th scope="col">Mensaje</th>
-<th scope="col">Fecha</th>
-</tr>
-</thead>
+text2 = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar por curso o catedratico...">
+<table id="myTable">
+  <tr class="header">
+    <th style="width:40%;">#</th>
+    <th style="width:40%;">Curso / Catedratico</th>
+    <th style="width:40%;">Estudiante</th>
+    <th style="width:60%;">Mensaje</th>
+    <th style="width:50%;">Fecha</th>
 <tbody>`
 
 fetch('http://localhost:5000/obtenercomentarios')
@@ -334,8 +297,8 @@ fetch('http://localhost:5000/obtenercomentarios')
         text2+= `
                 <tr>
                 <th scope="row">${i+1}</th>
-                <td>${data[i].nameestudiante}</td>
                 <td>${data[i].cc}</td>
+                <td>${data[i].nameestudiante}</td>
                 <td>${data[i].mensaje}</td>
                 <td>${data[i].fecha}</td>
                 </tr>
