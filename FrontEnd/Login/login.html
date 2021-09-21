@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Chingue a su madre INGE</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="form">
+      
+      <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Registro de Paciente</a></li>
+        <li class="tab"><a href="#login">Ingresa administrador</a></li>
+        <!-- <li class="tab"><a href="#loginpaciente">Ingreso de Pacientes</a></li> -->
+      </ul>
+      
+      <div class="tab-content">
+        <div id="signup">   
+          <h1>Ingresa tus Datos</h1>
+          
+          <form onsubmit="return false;">
+          
+            <div class="field-wrap">
+              <label>
+                Usuario<span class="req">*</span>
+              </label>
+              <input id="userp" type="text"required autocomplete="off"/>
+            </div>
+
+
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+                Nombre<span class="req">*</span>
+              </label>
+              <input id="nombrep" type="text" required autocomplete="off" />
+            </div>
+        
+            <div class="field-wrap">
+              <label>
+                Apellido<span class="req">*</span>
+              </label>
+              <input id="apellidop" type="text"required autocomplete="off"/>
+            </div>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Correo<span class="req">*</span>
+            </label>
+            <input id="correop" type="email"required autocomplete="off"/>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Contraseña (Minimo 4 caracteres)<span class="req">*</span>
+            </label>
+            <input id="passwordp" type="password" minlength="4" required autocomplete="off" onkeyup="verificar2(this.value);"/>
+          </div>
+
+        
+          <button id="btnEnviar" type="submit"  onclick="CrearPaciente()" disabled class="button button-block"/>REGISTRARME</button>
+          <!-- <button type="submit" onclick="IniciarSesion()"class="button button-block"/>INGRESAR</button> -->
+          </form>
+         
+
+        </div>
+        
+        <div id="login"> 
+          <h1>¡Inicia Sesion!</h1>
+          
+          <form onsubmit="return false;">
+          
+            <div class="field-wrap">
+            <label>
+              Usuario<span class="req">*</span>
+            </label>
+            <input id="lUsuario" type="text"required autocomplete="off"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              Contraseña<span class="req">*</span>
+            </label>
+            <input id="lPassword" type="password"required autocomplete="off"/>
+          </div>
+          
+
+          
+          <button type="submit" onclick="IniciarSesion()"class="button button-block"/>INGRESAR</button>
+          
+          </form>
+
+        </div>
+
+      </div><!-- tab-content -->
+      
+</div> <!-- /form -->
+<!-- partial -->
+<script src='./funciones.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

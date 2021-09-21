@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>UHospital Paciente</title>
+<!--
+
+Template 2098 Health
+
+http://www.tooplate.com/view/2098-health
+
+-->
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="Tooplate">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/animate.css">
+     <link rel="stylesheet" href="css/owl.carousel.css">
+     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="css/tooplate-style.css">
+
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+     <!-- PRE LOADER -->
+     <section class="preloader">
+          <div class="spinner">
+
+               <span class="spinner-rotate"></span>
+               
+          </div>
+     </section>
+
+
+   
+
+
+     <!-- MENU -->
+     <section class="navbar navbar-default navbar-static-top" role="navigation">
+        <!--  <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+
+                     lOGO TEXT HERE 
+                    <a href="index.html" class="navbar-brand"><i class="fa fa-h-square"></i>ealth Center</a>
+               </div>
+          -->
+
+               <!-- MENU LINKS -->
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="#top" class="smoothScroll">Solicitar Cita</a></li>
+                         <li><a href="#Estadocita" class="smoothScroll">Estado de su Cita</a></li>
+                         <li class="appointment-btn"><a href="../Medilab/index.html">SALIR</a></li>
+                    </ul>
+               </div>
+
+          </div>
+     </section>
+
+
+
+     <!-- MAKE AN APPOINTMENT -->
+     <section id="appointment" data-stellar-background-ratio="3">
+          <div class="container">
+               <div class="row">
+                
+                             <div class="col-lg-4 col-md-7 col-sm-8">
+                                 <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+                              
+                                     <div class="services-content mt-30">
+                                         <h4>Solicitar una Cita</h4>
+                                         <br>
+                                         
+                                         <label for="start">Fecha:</label>
+                                         <br>
+                                         <input type="date" id="fechac" name="trip-start"
+                                          value="2000-12-01"
+                                          min="2020-12-01" max="2030-12-31">
+                
+                                          <br>
+                
+                                        
+                                         <br>
+                                         <label for="start">Hora:</label>
+                                         <br>
+                                         <input type="text" id="horac" placeholder="24hrs">
+                                         <br>
+                                         <label for="start">Motivo:</label>
+                                         <br>
+                                         <textarea cols="26" rows="5" id="motivoc" placeholder="Motivo de su Cita"> </textarea>   <!-- <input type="textarea" id="motivoc" placeholder="Motivo de su Cita">-->
+                                         <br><br> <br> 
+                                         <button class="btn btn btn-success" onclick="agregarsolicitud()">Enviar Solicitud</button>
+                                         <br>                       
+                                     </div>
+                                 </div> <!-- single services -->
+                             </div>
+                            
+                
+                         
+                         </div>
+                    </div>
+
+                
+                        </form>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+
+
+      
+
+
+     <!-- FOOTER 
+     <footer data-stellar-background-ratio="5" id="Estadocita">
+          <div class="container">
+               <h4 class="wow fadeInUp" data-wow-delay="0.4s">Estado de su Cita</h4>
+               <button class="btn btn-primary" type="submit">ddddd</button>
+               </div>
+          </div>
+     </footer>-->
+
+     <!-- LISTADO DE PACIENTES -->
+<section id="EstadoCitaa" class="about-area pt-70">
+     <br>
+     <br>
+     <div class="container">
+         <div class="row">
+             <div class="col-lg-8">
+                   <div class="section-title">
+                         <div class="line"></div>
+                         <h3 class="title">Estado de su Cita</h3>
+                     </div> <!-- section title -->
+                     <br>
+                     <!-- Cambio del DIV-->
+                     <div id='cardsc' class="row">
+                         <div id="tablacitas" class="row"></div>
+                     </div>
+                     
+                 </div>
+             </div>
+         </div> <!-- row -->
+     </div> <!-- container -->
+ </section>
+
+
+
+<!-- LISTADO DE MEDICAMENTOS -->
+<section id="medicamentos" class="about-area pt-70">
+     <br>
+     <br>
+     <div class="container">
+         <div class="row">
+             <div class="col-lg-8">
+                   <div class="section-title">
+                         <div class="line"></div>
+                         <h3 class="title">Medicamentos</h3>
+                     </div> <!-- section title -->
+                     <br>
+                     <!-- Cambio del DIV-->
+                     <div id='cardsc' class="row">
+                         <div id="tablamedicamentos" class="row"></div>
+                     </div>
+                     
+                 </div>
+             </div>
+         </div> <!-- row -->
+     </div> <!-- container -->
+ </section>
+
+
+
+     <!-- SCRIPTS -->
+     <script src="js/funcioncitas.js"></script>
+     <script src="js/jquery.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/jquery.sticky.js"></script>
+     <script src="js/jquery.stellar.min.js"></script>
+     <script src="js/wow.min.js"></script>
+     <script src="js/smoothscroll.js"></script>
+     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/custom.js"></script>
+
+</body>
+</html>
