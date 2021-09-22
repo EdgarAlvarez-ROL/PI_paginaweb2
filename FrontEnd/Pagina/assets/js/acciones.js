@@ -240,11 +240,11 @@ function actualizar(){
 text = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar por curso o catedratico...">
 <table id="myTable">
   <tr class="header">
-    <th style="width:40%;">#</th>
+    <th style="width:20%;">#</th>
     <th style="width:40%;">Curso / Catedratico</th>
+    <th style="width:100%;">-----Mensaje-----</th>
     <th style="width:40%;">Estudiante</th>
-    <th style="width:60%;">Mensaje</th>
-    <th style="width:50%;">Fecha</th>
+    <th style="width:80%;">Fecha</th>
 <tbody>`
 
   fetch('http://localhost:5000/obtenercomentarios')
@@ -258,8 +258,8 @@ text = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busc
                   <tr>
                   <th scope="row">${i+1}</th>
                   <td>${data[i].cc}</td>
-                  <td>${data[i].nameestudiante}</td>
                   <td>${data[i].mensaje}</td>
+                  <td>${data[i].nameestudiante}</td>
                   <td>${data[i].fecha}</td>
                   </tr>
                   `
@@ -280,11 +280,11 @@ let text2=""
 text2 = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar por curso o catedratico...">
 <table id="myTable">
   <tr class="header">
-    <th style="width:40%;">#</th>
+    <th style="width:20%;">#</th>
     <th style="width:40%;">Curso / Catedratico</th>
+    <th style="width:100%;">-----Mensaje-----</th>
     <th style="width:40%;">Estudiante</th>
-    <th style="width:60%;">Mensaje</th>
-    <th style="width:50%;">Fecha</th>
+    <th style="width:80%;">Fecha</th>
 <tbody>`
 
 fetch('http://localhost:5000/obtenercomentarios')
@@ -298,8 +298,8 @@ fetch('http://localhost:5000/obtenercomentarios')
                 <tr>
                 <th scope="row">${i+1}</th>
                 <td>${data[i].cc}</td>
-                <td>${data[i].nameestudiante}</td>
                 <td>${data[i].mensaje}</td>
+                <td>${data[i].nameestudiante}</td>
                 <td>${data[i].fecha}</td>
                 </tr>
                 `
