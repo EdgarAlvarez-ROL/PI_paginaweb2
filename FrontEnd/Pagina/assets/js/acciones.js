@@ -221,7 +221,7 @@ function agregarComentario(){
   .then(result => {
     console.log('Success:', result);
     actualizar()
-    nameestudiante.value=''
+    // nameestudiante.value=''
     cc.value='Selecciona una opcion'
     mensaje.value=''
     fecha.value=''
