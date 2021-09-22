@@ -67,8 +67,9 @@ function IniciarSesion(){
             usuario.value='';
         }else{
             alert(`Bienvenido ${data.nombre}`)
+            cua =data.nombre;
             window.location.href='../Pagina/inicio.html'
-            guardar_localStorage("UserActual",usuario.value)
+            guardar_localStorage("UserActual",cua)
         }
     })
 

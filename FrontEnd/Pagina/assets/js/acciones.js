@@ -242,7 +242,7 @@ text = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busc
   <tr class="header">
     <th style="width:20%;">#</th>
     <th style="width:40%;">Curso / Catedratico</th>
-    <th style="width:100%;">-----Mensaje-----</th>
+    <th style="width:100%;">Mensaje</th>
     <th style="width:40%;">Estudiante</th>
     <th style="width:80%;">Fecha</th>
 <tbody>`
@@ -282,7 +282,7 @@ text2 = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Bus
   <tr class="header">
     <th style="width:20%;">#</th>
     <th style="width:40%;">Curso / Catedratico</th>
-    <th style="width:100%;">-----Mensaje-----</th>
+    <th style="width:100%;">Mensaje</th>
     <th style="width:40%;">Estudiante</th>
     <th style="width:80%;">Fecha</th>
 <tbody>`
