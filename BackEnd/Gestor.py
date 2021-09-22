@@ -103,6 +103,13 @@ class Gestor:
                 return True
         return False
 
+    def actualizar_usuario(self,userR,nombre,apellido,password,user,correo):
+        for x in self.usuarios:
+            if x.user==userR:
+                self.usuarios[self.usuarios.index(x)]=Usuario(nombre,apellido,password,user,correo)
+                return True
+        return False
+
 
     # def actualizar_medico(self,nombrem,nombrenuevo,apellidom,fecham,sexom,userm,passwordm,especialidadm,telm):
     #     for x in self.medicos:

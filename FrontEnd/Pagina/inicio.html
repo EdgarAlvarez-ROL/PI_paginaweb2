@@ -215,7 +215,7 @@
             <div class="row justify-content-center">
                     <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
                         <div class="services-content mt-30">
-                            <h4 class="services-title"><a href="#">Crear Comentario CURSO y otro del PROFE</a></h4>
+                            <h4 class="services-title"><a href="#">Crear Comentario PROFE</a></h4>
                             
                             <input type="text" id="nameestudiante" placeholder="Nombre" disabled>
                             <br>
@@ -246,6 +246,43 @@
                     </div> 
                 
             </div> <!-- row -->
+
+            <!-- ñ -->
+            <div class="row justify-content-center">
+                <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="services-content mt-30">
+                        <h4 class="services-title"><a href="#">Crear Comentario CURSO</a></h4>
+                        
+                        <input type="text" id="nombre2" placeholder="Nombre" disabled>
+                        <br>
+                        <p>Catedratico:</p><select id="cc2" class="select-css">
+                            <option>Selecciona una opción</option>
+                            <option>Curso 1</option>
+                            <option>Curso 2</option>
+                            <option>Curso 3</option>
+                            <option>Curso 4</option>
+                            <option>Curso 5</option>
+                            <option>Curso 6</option>
+                            <option>Curso 7</option>
+                            <option>Curso 8</option>
+                            <option>Curso 9</option>
+                            <option>Curso 10</option>
+                          </select>
+                        <br>
+                        <label for="start">Fecha de Publicacion:</label>
+                        <input type="date" id="fecha2" name="trip-start"
+                         value="2000-12-31"
+                         min="1990-12-31" max="2021-12-31">
+                        <br>
+                        <input type="text" id="mensaje2" placeholder="Comentario en Cuestion">
+                        <br>
+                        <button class="btn btn btn-success" onclick="agregarComentario2()">Agregar</button>
+                        <br>                       
+                    </div>
+                </div> 
+            
+            </div> <!-- row -->
+            <!-- ñ} -->
            
         </div> <!-- container -->
     </section>
@@ -282,15 +319,17 @@
                         <div class="services-content mt-30">
                             <h4 class="services-title"><a href="#">Modificar</a></h4>
                             <br>
-                            <input type="text" id="vnombrep" placeholder="REGISTRO DE USUARIO">
-                            <input type="text" id="mnombrep" placeholder="Nuevo Nombre">
-                            <input type="text" id="mapellidop" placeholder="Nuevo Apellido">
+                            <!-- Ocultar los labels con hidden -->
+                            
+                            <input type="text" id="userR" placeholder="REGISTRO DE USUARIO" disabled>
+                            <input type="text" id="nombreN" placeholder="Nuevo Nombre">
+                            <input type="text" id="apellidoN" placeholder="Nuevo Apellido">
                             <!-- <input type="text" id="muserp" placeholder="Nuevo Nombre Usuario"> -->
-                            <input type="text" id="mpasswordp" placeholder="Nueva Contraseña">
-                            <input type="text" id="mcorreop" placeholder="Nuevo Correo">
+                            <input type="text" id="contraseñaN" placeholder="Nueva Contraseña">
+                            <input type="text" id="correoN" placeholder="Nuevo Correo">
                             <br>
                             <br>
-                            <button class="btn btn btn-success" onclick="modificarPaciente()">Modificar</button>
+                            <button class="btn btn btn-success" onclick="modificicarDatos()">Modificar</button>
                                                
                         </div>
                     </div> <!-- single services -->
@@ -355,6 +394,16 @@
         let info = localStorage.getItem("UserActual");
         var inputF = document.getElementById("nameestudiante");
         inputF.value = info;
+
+        let info2 = localStorage.getItem("Nombre2");
+        var inputF2 = document.getElementById("nombre2");
+        inputF2.value = info2;
+
+        let infoR = localStorage.getItem("Registro");
+        var inputR = document.getElementById("userR");
+        inputR.value = infoR;
+
+        //Buscardor por Catedratico o Curso
         function myFunction() {
           // Declare variables
           var input, filter, table, tr, td, i, txtValue;
@@ -363,7 +412,7 @@
           table = document.getElementById("myTable");
           tr = table.getElementsByTagName("tr");
         
-          // Loop through all table rows, and hide those who don't match the search query
+          // Loop que busca todo fila a fila
           for (i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[0];
             if (td) {

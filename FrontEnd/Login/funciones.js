@@ -40,7 +40,7 @@ function CrearPaciente(){
       nombre.value=''
       apellido.value=''
       user.value=''
-      correo = ''
+      correo.value=''
       passwordp.value=''
       alert('Usuario Registrado');
     })
@@ -70,6 +70,8 @@ function IniciarSesion(){
             cua =data.nombre;
             window.location.href='../Pagina/inicio.html'
             guardar_localStorage("UserActual",cua)
+            guardar_localStorage("Nombre2",cua)
+            guardar_localStorage("Registro",usuario.value)
         }
     })
 
@@ -99,53 +101,6 @@ function IniciarSesionp(){
 
 }
 
-
-//Inicia Sesion como Enfermero
-  function IniciarSesionef(){
-  let usuarioef = document.getElementById("lUsuarioef");
-  let passef = document.getElementById("lPasswordef");
-  fetch(`http://localhost:5000/login/${usuarioef.value}/${passef.value}`)
-  // Convirtiendo de string a texto
-  .then(response => response.json())
-  // Manejando la data
-  .then(data => {
-      console.log(data.nombrep)
-      if(data.nombre=="false"){
-          alert('Verifique sus Credenciales')
-          pass.value='';
-          usuario.value='';
-      }else{
-          alert(`Bienvenido ${data.nombree}`)
-          window.location.href='../Enfermero/Penfermeros.html'
-      }
-  })
-
-}
-
-
-
-
-  //DOCTOR
-  function IniciarSesiondoc(){
-  let userm = document.getElementById("lUsuariodoc");
-  let passwordm = document.getElementById("lPassworddoc");
-  fetch(`http://localhost:5000/login/${userm.value}/${passwordm.value}`)
-  // Convirtiendo de string a texto
-  .then(response => response.json())
-  // Manejando la data
-  .then(data => {
-      console.log(data.nombrem)
-      if(data.nombre=="false"){
-          alert('Verifique sus Credenciales')
-          pass.value='';
-          usuario.value='';
-      }else{
-          alert(`Bienvenido ${data.nombrem}`)
-          window.location.href='../Doctor/doctor.html'
-      }
-  })
-
-}
 
 
 //Desbloquear el Boton de Registro

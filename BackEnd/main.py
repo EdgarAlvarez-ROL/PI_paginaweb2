@@ -32,6 +32,16 @@ def obtener_usuarios():
     return gestor.obtener_usuarios()
 
 
+@app.route('/usuarios/<userR>',methods=['PUT'])
+def actualizarusuario(userR):
+    datom = request.json
+    if gestor.actualizar_usuario(userR,datom['nombre'],datom['apellido'],datom['contraseña'],datom['usuario'],datom['correo']):
+        return '{"data":"Actualizado"}'
+    return '{"data":"Error"}'
+
+
+
+
 #COMENTARIOS
 @app.route('/comentarios',methods=['POST'])
 def crearcomentario():

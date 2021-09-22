@@ -106,12 +106,12 @@ function cargar(){
 }
 
 //ARREGLAR pal usuario
-function modificarPaciente(){
-  let nombrep_o = document.getElementById("vnombrep");
-  let nombrep = document.getElementById("mnombrep");
-  let apellidop = document.getElementById("mapellidop");
-  let passwordp = document.getElementById("mpasswordp");
-  let correop = document.getElementById("mcorreop")
+function modificicarDatos(){
+  let user = document.getElementById("userR");
+  let nombrep = document.getElementById("nombreN");
+  let apellidop = document.getElementById("apellidoN");
+  let passwordp = document.getElementById("contraseñaN");
+  let correop = document.getElementById("correoN")
 
   let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -121,11 +121,11 @@ function modificarPaciente(){
     "nombre":"${nombrep.value}",
     "apellido":"${apellidop.value}",
     "contraseña":"${passwordp.value}",
-    "usuario":"${userp.value}",
+    "usuario":"${user.value}",
     "correo":"${correop.value}"
   }`
 
-  fetch('http://localhost:5000/pacientes/'+nombrep_o.value, {
+  fetch('http://localhost:5000/usuarios/'+user.value, {
     method: 'PUT',
     headers,
     body: reque,
@@ -134,10 +134,8 @@ function modificarPaciente(){
   .then(result => {
     console.log('Success:', result);
     actualizar()
-    nombrep_o.value=''
     nombrep.value=''
     apellidop.value=''
-    // userp.value=''
     passwordp.value=''
     correop.value=''
   })
@@ -225,6 +223,38 @@ function agregarComentario(){
     cc.value='Selecciona una opcion'
     mensaje.value=''
     fecha.value=''
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+}
+
+
+function agregarComentario2(){
+  let nameestudiante2 = document.getElementById("nombre2");
+  let cc2 = document.getElementById("cc2");
+  let fecha2 = document.getElementById("fecha2");
+  let mensaje2 = document.getElementById("mensaje2");
+  
+  fetch('http://localhost:5000/comentarios', {
+    method: 'POST',
+    headers,
+    body: `{
+        "nameestudiante":"${nameestudiante2.value}",
+        "cc":"${cc2.value}",
+        "mensaje":"${mensaje2.value}",
+        "fecha":"${fecha2.value}"
+      }`,
+  })
+  .then(response => response.json())
+  .then(result => {
+    console.log('Success:', result);
+    actualizar()
+    // nameestudiante.value=''
+    cc2.value='Selecciona una opcion'
+    mensaje2.value=''
+    fecha2.value=''
   })
   .catch(error => {
     console.error('Error:', error);
