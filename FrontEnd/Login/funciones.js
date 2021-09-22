@@ -1,5 +1,12 @@
-
-
+//LocalStorage
+function guardar_localStorage(key,value){
+  localStorage.setItem(key,value);
+}
+function get_localStorage(key){
+  let info = localStorage.getItem(key);
+  console.log(JSON.parse(info));
+  return JSON.parse(info);
+}
 //Declaracion de Headers
 let headers = new Headers()
 headers.append('Content-Type', 'application/json');
@@ -61,6 +68,7 @@ function IniciarSesion(){
         }else{
             alert(`Bienvenido ${data.nombre}`)
             window.location.href='../Pagina/inicio.html'
+            guardar_localStorage("UserActual",usuario.value)
         }
     })
 
