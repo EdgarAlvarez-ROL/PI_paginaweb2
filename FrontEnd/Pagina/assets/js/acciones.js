@@ -268,13 +268,14 @@ function actualizar(){
   document.getElementById("cardsc").innerHTML = '';
   let text="";
 text = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar por curso o catedratico...">
-<table id="myTable">
   <tr class="header">
     <th style="width:20%;">#</th>
     <th style="width:40%;">Curso / Catedratico</th>
     <th style="width:100%;">Mensaje</th>
     <th style="width:40%;">Estudiante</th>
     <th style="width:80%;">Fecha</th>
+    <th scope="col">Opciones</th>
+  </tr> 
 <tbody>`
 
   fetch('http://localhost:5000/obtenercomentarios')
@@ -291,6 +292,7 @@ text = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busc
                   <td>${data[i].mensaje}</td>
                   <td>${data[i].nameestudiante}</td>
                   <td>${data[i].fecha}</td>
+                  <td><button href="#" class="btn btn btn-danger" >FORO</button></td>
                   </tr>
                   `
                   // console.log(data[i].nombrep,'prueba')
@@ -315,6 +317,8 @@ text2 = `<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Bus
     <th style="width:100%;">Mensaje</th>
     <th style="width:40%;">Estudiante</th>
     <th style="width:80%;">Fecha</th>
+    <th scope="col">Opciones</th>
+  </tr> 
 <tbody>`
 
 fetch('http://localhost:5000/obtenercomentarios')
@@ -331,6 +335,7 @@ fetch('http://localhost:5000/obtenercomentarios')
                 <td>${data[i].mensaje}</td>
                 <td>${data[i].nameestudiante}</td>
                 <td>${data[i].fecha}</td>
+                <td><button href="#" class="btn btn btn-danger" >FORO</button></td>
                 </tr>
                 `
     }
