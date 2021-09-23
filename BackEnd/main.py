@@ -39,6 +39,10 @@ def actualizarusuario(userR):
         return '{"data":"Actualizado"}'
     return '{"data":"Error"}'
 
+@app.route('/obtenerUnicoUsuario/<user>')
+def obtenerunusuario(user):
+    return gestor.obtener_unico_usuario(user)
+
 
 
 

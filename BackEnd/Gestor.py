@@ -35,9 +35,10 @@ class Gestor:
 
         #ESTO ES LO QUE IMPORTA
         #USUARIOS
-        self.usuarios.append(Usuario('Javier','Golon','1234','admin',''))
-        self.usuarios.append(Usuario('Edgar','Alvarez','1234','rol',''))
-        self.usuarios.append(Usuario('Luisa','Ortiz','1234','luitiz',''))
+        self.usuarios.append(Usuario('Javier','Golon','1234','admin','nada'))
+        self.usuarios.append(Usuario('Nombre','Apellido','Contraseña','Registro','Correo'))
+        self.usuarios.append(Usuario('Edgar','Alvarez','1234','rol','nada'))
+        self.usuarios.append(Usuario('Luisa','Ortiz','1234','luitiz','nada'))
 
 
         #COMENTARIOS
@@ -76,6 +77,12 @@ class Gestor:
 
     def obtener_comentarios(self):
         return json.dumps([ob.__dict__ for ob in self.comentarios])
+
+    def obtener_unico_usuario(self,user):
+        for x in self.usuarios:
+            if x.user==user:
+                return json.dumps(x.__dict__)
+    
 
     # def obtener_pacientes(self):
     #     return json.dumps([ob.__dict__ for ob in self.pacientes])

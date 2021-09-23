@@ -1,5 +1,7 @@
-  //Declaracion de Headers
-
+//Variables Globales
+var cua1 = 'Registro'  
+  
+//Declaracion de Headers
 let headers = new Headers()
 headers.append('Content-Type', 'application/json');
 headers.append('Accept', 'application/json');
@@ -105,7 +107,7 @@ function cargar(){
     }
 }
 
-//ARREGLAR pal usuario
+//Modificar Datos Personales
 function modificicarDatos(){
   let user = document.getElementById("userR");
   let nombrep = document.getElementById("nombreN");
@@ -146,6 +148,14 @@ function modificicarDatos(){
   
 
 }
+
+
+
+
+
+
+
+
 
 
 function eliminar(paciente,userp){
@@ -343,3 +353,113 @@ fetch('http://localhost:5000/obtenercomentarios')
             </table>`
     document.getElementById("tablapacientes").innerHTML = text2;
 });
+
+
+
+
+
+
+
+//Buscar Usuario
+function BuscarUsuarios(){
+  let userB = document.getElementById("userB");
+  // let headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   headers.append('Accept', 'application/json');
+  fetch(`http://localhost:5000/obtenerUnicoUsuario/${userB.value}`)
+  // Convirtiendo de string a texto
+  .then(response => response.json())
+  // Manejando la data
+  .then(data => {
+       console.log(data.nombre)
+       if(data.nombre=="false"){
+           alert('Usuario No Encontrado')
+       }else{
+           alert(`Usuario ${data.user}`)
+           cua1 = data.user;
+           mostrarTabla(cua1)
+       }
+    })
+
+}
+
+
+
+
+// MOSTRAR TABLA DE USUARIO BUSCADO //POR ALGUNA RAZON NO ACTUALIZA
+function mostrarTabla(dato){
+  document.getElementById("cardq").innerHTML = '';
+  let text5=""
+  
+//
+fetch(`http://localhost:5000/obtenerUnicoUsuario/${dato}`)
+.then(response => response.json())
+.then(data => {
+     console.log(data.nombre)
+     if(data.nombre=="false"){
+         alert('Usuario No Encontrado')
+     }else{
+        //  alert(`Usuario ${data.user}`)
+        alert(`Usuario ${data.user}`)
+text5 = `<table id="myTable">
+<tr class="header">
+    <th style="width:60%;">Nombre</th>
+    <th style="width:60%;">Apellido</th>
+    <th style="width:60%;">Correo</th>
+  </tr> 
+
+  <tr>
+  <td>${data.nombre}</td>
+  <td>${data.apellido}</td>
+  <td>${data.correo}</td>
+  </tr>
+
+<tbody>`
+
+text5=`</tbody>
+</table>`
+document.getElementById("cardq").innerHTML = text5;
+     }
+  })
+//
+
+}
+
+
+
+//Mostrar Tabla desde un Inicio 
+
+fetch(`http://localhost:5000/obtenerUnicoUsuario/${"rol"}`)
+// Convirtiendo de string a texto
+.then(response => response.json())
+// Manejando la data
+.then(data => {
+     console.log(data.nombre)
+     if(data.nombre=="false"){
+         alert('Usuario No Encontrado')
+     }else{
+         alert(`Usuario ${data.user}`)
+         let text5=""
+text5 = `<table id="myTable">
+<tr class="header">
+    <th style="width:60%;">Nombre</th>
+    <th style="width:60%;">Apellido</th>
+    <th style="width:60%;">Correo</th>
+  </tr> 
+
+  <tr>
+  <td>${data.nombre}</td>
+  <td>${data.apellido}</td>
+  <td>${data.correo}</td>
+  </tr>
+
+<tbody>`
+
+text5+=`</tbody>
+</table>`
+document.getElementById("tablaUsuario").innerHTML = text5;
+     }
+  })
+
+
+
