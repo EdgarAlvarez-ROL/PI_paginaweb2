@@ -5,4 +5,5 @@ class Usuario:
         self.password = password
         self.user = usuario
         self.correo = correo
+        self.cursos = []
 

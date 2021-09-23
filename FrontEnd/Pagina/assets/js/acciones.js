@@ -407,16 +407,14 @@ text5 = `<table id="myTable">
     <th style="width:60%;">Apellido</th>
     <th style="width:60%;">Correo</th>
   </tr> 
-
+<tbody>
   <tr>
   <td>${data.nombre}</td>
   <td>${data.apellido}</td>
   <td>${data.correo}</td>
   </tr>
 
-<tbody>`
-
-text5=`</tbody>
+</tbody>
 </table>`
 document.getElementById("cardq").innerHTML = text5;
      }
