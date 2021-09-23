@@ -82,6 +82,7 @@ class Gestor:
         for x in self.usuarios:
             if x.user==user:
                 return json.dumps(x.__dict__)
+        return '{"nombre":"false"}'
     
 
     # def obtener_pacientes(self):

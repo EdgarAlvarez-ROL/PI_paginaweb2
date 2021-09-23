@@ -6,4 +6,5 @@ class Usuario:
         self.user = usuario
         self.correo = correo
         self.cursos = []
+        self.creditos = 0
 

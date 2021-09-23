@@ -1,3 +1,11 @@
+function guardar_localStorage(key,value){
+  localStorage.setItem(key,value);
+}
+function get_localStorage(key){
+  let info = localStorage.getItem(key);
+  console.log(JSON.parse(info));
+  return JSON.parse(info);
+}
 //Variables Globales
 var cua1 = 'Registro'  
   
@@ -371,13 +379,13 @@ function BuscarUsuarios(){
   .then(response => response.json())
   // Manejando la data
   .then(data => {
-       console.log(data.nombre)
-       if(data.nombre=="false"){
+       if(data.nombre =="false"){
            alert('Usuario No Encontrado')
        }else{
            alert(`Usuario ${data.user}`)
            cua1 = data.user;
            mostrarTabla(cua1)
+           guardar_localStorage("Perfil",JSON.stringify(data))
        }
     })
 
@@ -406,12 +414,14 @@ text5 = `<table id="myTable">
     <th style="width:60%;">Nombre</th>
     <th style="width:60%;">Apellido</th>
     <th style="width:60%;">Correo</th>
+    <th style="width:60%;">Más</th>
   </tr> 
 <tbody>
   <tr>
   <td>${data.nombre}</td>
   <td>${data.apellido}</td>
   <td>${data.correo}</td>
+  <td><a class="btnver btn btn-secondary" href="./Perfil.html">Ver Usuario</a></td>
   </tr>
 
 </tbody>
@@ -423,7 +433,9 @@ document.getElementById("cardq").innerHTML = text5;
 
 }
 
-
+function pop(){
+  console.log("HOla xd")
+}
 
 //Mostrar Tabla desde un Inicio 
 
