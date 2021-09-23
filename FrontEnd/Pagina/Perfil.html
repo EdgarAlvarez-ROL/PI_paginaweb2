@@ -85,6 +85,7 @@
                         <img src="./assets/images/user.png" width="25%">
                         <div id="info"class="services-content mt-30">                 
                         </div>
+                        <br>
                         <div id="curso"class="services-content mt-30">                 
                         </div>
                     </div> 
@@ -110,7 +111,21 @@
         
         const actual = JSON.parse(localStorage.getItem("Registro"))
         if (estudiante.user == actual){
-            console.log("Aparece wusshhhh");
+            materias = [{curso:"IPC1",creditos:5},{curso:"MB1",creditos:5}]
+            const curso = document.getElementById("curso")
+            let nuevo = ""
+            nuevo = ` <h3>Agregar Curso</h3><br>
+            <select  id="asignatura">
+            `
+            console.log(materias)                       
+            materias.forEach(element => {
+                nuevo += `<option value="${element.curso}">${element.curso} - ${element.creditos}</option>`    
+            });
+            nuevo +=`</select>
+                    <Button class="btn btn-info">Agregar</Button>
+            <h3>Créditos: ${estudiante.creditos}</h3>` 
+            nuevo += "</ol>"
+            curso.innerHTML = nuevo
         } 
     </script>
 </body>
